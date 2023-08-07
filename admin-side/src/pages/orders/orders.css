@@ -1,0 +1,70 @@
+.tableContainer{
+
+
+    flex: 4;
+
+
+}
+
+
+table {
+    border-collapse: separate;
+
+    border-spacing: 15px;
+
+  
+
+    
+  }
+
+
+  img{
+
+    object-fit: contain;
+  }
+
+
+  .product{
+
+    display: flex;
+
+    flex-direction: column;
+
+  
+
+
+  }
+
+  tr{
+
+    border: 2px solid green;
+
+
+  }
+
+  td{
+
+    border: 2px;
+  }
+
+  .pending{
+
+
+    color: #d1411e;
+
+    cursor: not-allowed;
+
+    
+
+   
+
+  }
+
+  .confirmed{
+
+    color: green;
+
+    cursor: not-allowed;
+  }
+
+  

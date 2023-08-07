@@ -1,0 +1,95 @@
+.nav-item {
+  font-size: 20px;
+  font-family: "Roboto";
+  color: black;
+}
+
+.products {
+  display: flex;
+  align-items: center;
+}
+
+.products img {
+  height: 30px;
+  width: 30px;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+.products h5 {
+  font-weight: 900;
+  font-size: 15px;
+}
+span {
+  font-weight: 700;
+  font-size: 15px;
+}
+.image-upload{
+  display: flex;
+  align-items: center;
+}
+.publish-icon{
+  margin: 20px;
+  font-size: 35px;
+  cursor: pointer;
+}
+.delete {
+  border: none;
+  color: red;
+  padding: 3px;
+  font-weight: 900;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.updatebtn {
+  background-color: teal;
+  border: none;
+  color: white;
+  padding: 3px;
+  font-weight: 900;
+  cursor: pointer;
+}
+.downloadQR{
+  border: none;
+  cursor: pointer;
+  margin: 10px 20px;
+  padding: 10px;
+  background-color: #aaaa;
+  font-weight: 900;
+
+}
+.addcustomer {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.addcustomer input {
+  margin: 5px 0px;
+  padding: 10px;
+
+ 
+}
+
+.order{
+  display: flex;
+  flex-direction: column;
+}
+
+.update{
+  display: flex;
+  flex-direction: column;
+
+}
+.update input{
+  margin: 20px 0px;
+  padding: 10px;
+}
+.update img{
+  height: 200px;
+  width:200px;
+
+}
+.update textarea{
+  padding:30px;
+}

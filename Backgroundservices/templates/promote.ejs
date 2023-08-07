@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* CSS styles for your email */
+  </style>
+</head>
+<body>
+<h1>Products:</h1>
+  <ul>
+    <% products.forEach(function(product) { %>
+      <li>
+        <h3><%= product.title %></h3>
+        <p><%= product.originalPrice %></p>
+        <img src="<%= product.img %>" alt="<%= product.title %>">
+      </li>
+    <% }) %>
+  </ul>
+</body>
+</html>

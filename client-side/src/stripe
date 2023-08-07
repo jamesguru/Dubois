@@ -1,0 +1,29 @@
+<StripeCheckout
+                        
+    name="Toto"
+
+    image = 'https://cdn.pixabay.com/photo/2015/06/22/08/40/child-817373__340.jpg'
+
+    billingAddress
+
+    shippingAddress
+
+    description={`Your total is $${cart.total}`}
+
+    amount={cart.total * 100}
+
+    token = {onToken}
+
+    stripeKey={KEY}
+    
+    >
+
+
+
+
+    
+    
+        
+
+
+    </StripeCheckout>
