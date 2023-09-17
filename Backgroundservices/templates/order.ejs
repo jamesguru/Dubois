@@ -1,29 +1,95 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <style>
-    /* CSS styles for your email */
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DUBOIS BEAUTY</title>
+    <style type="text/css">
+        body{
+            margin:0;
+            padding: 0;
+            min-width:100%;
+            font-family: Arial,sans-serif;
+            font-size:16px;
+            line-height: 1.5;
+            background-color: #FAFAFA;
+            color:#222222;
+        }
+        a{
+            color:#000;
+            text-decoration: none;
+        }
+
+        h1{
+            font-size:24px;
+            font-weight:700;
+            line-height:1.25;
+            margin-top:0;
+            margin-bottom:15px;
+            text-align:center;
+        }
+
+        p{
+            margin-top: 0;
+            margin-bottom: 24px;
+        }
+        table td{
+            vertical-align: top;
+        }
+        .email-wrapper{
+            max-width:700px;
+            margin: 0 auto;
+        }
+        .email-header{
+            background-color: #0c0c0c;
+            padding: 24px;
+            color: #d7b847;
+        }
+
+        .email-body{
+            padding:24px;
+            background-color: #f6f6f6;
+        }
+        .email-footer{
+            background-color: #f6f6f6;
+            padding: 24px;
+        }
+    </style>
 </head>
 <body>
 
-    <h1>Buyer's Information</h1>
-    <ul>
-        <li>Name:<%= name %></li>
-        <li>Telephone:<%= phone %></li>
-        <li>Email: <%= email %></li>
-        <li>Address: <%= address %></li>
-         <li>Total:<%= total %></li>
-    </ul>
-  <h1>Products:</h1>
-  <ul>
-    <% products.forEach(function(product) { %>
-      <li>
-        <h3><%= product.title %></h3>
-        <p><%= product.originalPrice %></p>
-        <img src="<%= product.img %>" alt="<%= product.title %>">
-      </li>
-    <% }) %>
-  </ul>
+    <div class="email-wrapper">
+
+        <div class="email-header">
+            <h1>DUBOIS BEAUTY</h1>
+        </div>
+        
+        <div class="email-body">
+            <h1>Buyer's Information</h1>
+            <ul>
+                <li><strong>NAME:</strong><%= name %></li>
+                <li><strong>TELEPHONE:</strong><%= phone %></li>
+                <li><strong>EMAIL:</strong> <%= email %></li>
+                <li><strong>ADDRESS:</strong> <%= address %></li>
+                 <li><strong>TOTAL:</strong><%= total %></li>
+            </ul>
+          <h1>Products:</h1>
+          <ul>
+            <% products.forEach(function(product) { %>
+              <li>
+                <h3><%= product.title %></h3>
+                <p><%= product.originalPrice %></p>
+                <img src="<%= product.img %>" alt="<%= product.title %>" height="300px" width="300px">
+              </li>
+            <% }) %>
+          </ul>
+        </div>
+        <div class="email-footer">
+            <p>If you have any questions, please don't hesitate to contact us at <a href="mailto:jameskagunga2020@gmail.com">Support@duboisbeauty.com</a></a></p>
+        </div>
+
+    </div>
+
+    
 </body>
 </html>

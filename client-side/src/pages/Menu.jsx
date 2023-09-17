@@ -486,8 +486,8 @@ const Menu = () => {
             <thead>
               <tr>
                 <th>#</th>
-                <th>Phone</th>
                 <th>Email</th>
+                <th>Phone</th>
               </tr>
             </thead>
             <tbody>
@@ -495,10 +495,9 @@ const Menu = () => {
                 <tr>
                   <td>{index + 1}</td>
                   <td>
-                    <div className="products">
-                      <img src={product.img} alt="" />
-                      <h5>{product.title}</h5>
-                    </div>
+                    
+                      <h5>jameskagunga15@gmail.com</h5>
+                    
                   </td>
                   <td>
                     <span>0727632051</span>
