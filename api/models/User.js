@@ -9,6 +9,16 @@ const UserSchema = mongoose.Schema(
     location: { type: String },
     address: { type: String },
     seller: { type: String },
+    ratings: [
+      {
+        star: Number,
+
+        name: { type: String },
+
+        comment: { type: String },
+
+        postedBy: { type: String },
+      }],
     customers: [
       {
         name: { type: String },

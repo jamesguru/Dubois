@@ -188,11 +188,9 @@ const Orders = () => {
       try {
         const res = await publicRequest.get(`/orders/find/${user._id}`);
 
-        console.log(res.data);
-
         setOrders(res.data);
       } catch (error) {
-        console.log(error);
+     
       }
     };
 

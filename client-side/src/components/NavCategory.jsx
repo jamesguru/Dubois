@@ -62,15 +62,9 @@ const Cat = styled.span`
   @media screen and (max-width: 600px) {
     margin-right: 2px;
     font-size: 10px;
-    padding: 5px;
+    
   }
-
-  @media screen and (max-width: 1500px) {
-    margin-right: 2px;
-    font-size: 10px;
-
-    font-weight: bold;
-  }
+ 
 `;
 
 const NavCategory = () => {

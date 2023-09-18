@@ -6,13 +6,14 @@ const ProductSchema = mongoose.Schema(
 
     desc: { type: String, required: true },
 
+    highlight: { type: String, required: true },
+
     img: { type: String, required: true },
-
     video: { type: String },
-
     wholesaleSeller: { type: String },
+    sellerId: { type: Number, required: true },
     email: { type: String },
-    phone: { type: String },
+    phone: { type: String, required: true },
     wholesalePrice: { type: Number },
 
     wholesaleMinimumQuantity: { type: Number },

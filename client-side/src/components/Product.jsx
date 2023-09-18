@@ -123,14 +123,14 @@ const Price = styled.span`
 
 const Wholesale = styled.div`
   color: #dcca87;
-
+  width: 80%;
   background-color: #0c0c0c;
 
   font-weight: 900;
 
-  font-size: 17px;
+  font-size: 15px;
 
-  padding: 3px;
+  padding: 0px 5px;
 
   bottom: 0;
 
@@ -163,7 +163,13 @@ const product = ({ item }) => {
           <Image src={item.img} alt="" />
 
           {item.wholesalePrice && item.wholesaleSeller && (
-            <Wholesale>wholesale available</Wholesale>
+            <>
+
+            <Wholesale>wholesale available </Wholesale>
+            <Wholesale>From {item.wholesaleMinimumQuantity} pieces for {item.wholesalePrice}</Wholesale>
+            </>
+           
+            
           )}
 
           <Title>{item.title}</Title>

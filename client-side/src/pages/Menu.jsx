@@ -6,6 +6,7 @@ import { DataGrid } from "@material-ui/data-grid";
 import JsPDF from "jspdf";
 import "../styles/menu.css";
 import { Publish } from "@material-ui/icons";
+import { toast, ToastContainer } from "react-toastify";
 
 import {
   BrowserRouter as Router,
@@ -63,12 +64,12 @@ const Right = styled.div`
 `;
 
 const Button = styled.button`
-  margin: 30px 0px;
-  padding: 15px;
+  margin: 10px 0px;
+ 
   font-size: 15px;
   font-weight: 900;
   border: none;
-  width: 150px;
+  width: 200px;
   color: #dcca87;
   background-color: #0c0c0c;
   cursor: pointer;
@@ -156,6 +157,7 @@ const Menu = () => {
   const user = useSelector((state) => state.user.currentUser);
   const dispatch = useDispatch();
   const history = useHistory();
+  const [inputs, setInputs] = React.useState({});
 
   const handleClick = () => {
     setOpen(true);
@@ -237,6 +239,19 @@ const Menu = () => {
     dispatch(logOut());
     history.push("/seller");
   };
+
+  const handleChange = (e) => {
+    setInputs((prev) => {
+      return { ...prev, [e.target.name]: e.target.value };
+    });
+  };
+
+  console.log(inputs)
+
+  const handleAddCustomer =(e)=>{
+    e.preventDefault();
+    publicRequest.put(`/products/ratings/${id}`, inputs);
+  }
   useEffect(() => {
     const getProducts = async () => {
       try {
@@ -263,19 +278,18 @@ const Menu = () => {
 
     getOrders();
   }, []);
-  const generatePDF = () => {
-    const report = new JsPDF("landscape", "pt", "a3");
-    report.html(document.querySelector(".product")).then(() => {
-      report.save("products.pdf");
-    });
-  };
 
-  const downloadQR = () => {
-    const report = new JsPDF("landscape", "pt", "a3");
-    report.html(document.querySelector(".HpQrcode")).then(() => {
-      report.save("QRCode.pdf");
+
+  const generatePDF = () => {
+
+    const report = new JsPDF('landscape','pt','a3');
+    report.html(document.querySelector('.prod')).then(() => {
+        report.save('report.pdf');
     });
-  };
+
+  }
+
+  
   const columns = [
     { field: "_id", headerName: "ID", width: 90 },
 
@@ -328,14 +342,19 @@ const Menu = () => {
         className="mb-3"
       >
         <Tab eventKey="profile" title="Home">
-          <Button onClick={generatePDF}>
-            Download PDF <FontDownload></FontDownload>
+        <Button onClick={generatePDF}>
+            Print Pdf<Publish className="publish-icon" />
           </Button>
-          <div className="product">
+          
+          <div >
+          
             <Header>Credence Products</Header>
             <Wrapper>
               {data.map((item, index) => (
-                <Product item={item} key={index} />
+
+                <div className="prod">
+                    <Product item={item} key={index} />
+                </div>
               ))}
             </Wrapper>
           </div>
@@ -357,7 +376,7 @@ const Menu = () => {
             </thead>
             <tbody>
               {data.map((product, index) => (
-                <tr>
+                <tr key={index}>
                   <td>{index + 1}</td>
                   <td>
                     <div className="products">
@@ -403,7 +422,7 @@ const Menu = () => {
             </thead>
             <tbody>
               {orders.map((order, index) => (
-                <tr>
+                <tr key={index}>
                   <td>{index + 1}</td>
                   <td>
                     {order.products.map((product) => (
@@ -475,10 +494,10 @@ const Menu = () => {
           <Button onClick={handleCustomer}>New Customer</Button>
           {customer && (
             <div className="addcustomer">
-              <input type="text" placeholder="Enter customer name" />
-              <input type="phone" placeholder="Enter customer phone" />
-              <input type="phone" placeholder="Enter customer email" />
-              <Button>Submit</Button>
+              <input type="text" placeholder="Enter customer name"  onChange={handleChange}/>
+              <input type="phone" placeholder="Enter customer phone"  onChange={handleChange}/>
+              <input type="phone" placeholder="Enter customer email"  onChange={handleChange}/>
+              <Button onClick={handleAddCustomer}>Submit</Button>
             </div>
           )}
 
@@ -492,7 +511,7 @@ const Menu = () => {
             </thead>
             <tbody>
               {data.map((product, index) => (
-                <tr>
+                <tr key={index}>
                   <td>{index + 1}</td>
                   <td>
                     
@@ -518,9 +537,7 @@ const Menu = () => {
             />
           </div>
 
-          <button onClick={downloadQR} className="downloadQR">
-            Generate QR Code
-          </button>
+          
           <Button onClick={handleLogout}>Logout</Button>
         </Tab>
       </Tabs>

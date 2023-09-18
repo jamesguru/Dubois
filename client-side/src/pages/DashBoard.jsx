@@ -123,12 +123,14 @@ const DashBoard = () => {
 
     Category.push(user.seller);
     Category.push('all');
+    Category.push(user._id);
     const product = {
       ...inputs,
       img: image,
       email: user.email,
       wholesaleSeller:user.seller,
       phone: user.phone,
+      sellerId:user._id,
       categories: Category,
       skintype: SkinType,
       concern: Concern,
@@ -182,8 +184,13 @@ const DashBoard = () => {
         <UploadImg onClick={handleUpload}>upload</UploadImg>
 
         <h4 style={{ color: "green", fontWeight: "bold" }}>{uploading}</h4>
-        <Label>Video</Label>
-        <Input type="file" />
+        <Label> Youtube Video</Label>
+        <Input
+          type="text"
+          name="video"
+          onChange={handleChange}
+          placeholder="https://www.youtube.com/embed/2m-nuy2gpD4?si=jNIrdmTHNCisRcsk"
+        />
         <Label>Title</Label>
         <Input
           type="text"
@@ -198,6 +205,14 @@ const DashBoard = () => {
           rows="5"
           onChange={handleChange}
           placeholder="description"
+        />
+        <Label>Highlights</Label>
+        <TextArea
+          name="highlights"
+          cols="40"
+          rows="5"
+          onChange={handleChange}
+          placeholder="Highlights"
         />
         <Label>Original Price</Label>
         <Input

@@ -467,6 +467,18 @@ const Product = () => {
     setAdd(true);
   };
 
+  const VideoIframe = styled.iframe`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  `;
+
+  const Vid = styled.div`
+  margin: 40px 20px;
+  `
+
   return (
     <Container>
       <ToastContainer
@@ -554,9 +566,7 @@ const Product = () => {
                 <WholesaleText> Wholesale</WholesaleText>
 
                 <WholesaleText>
-                  For items more than {product.wholesaleMinimumQuantity} items
-                  you get the whole price of ksh {product.wholesalePrice} per
-                  item.
+                  From {product.wholesaleMinimumQuantity} pieces for {product.wholesalePrice}
                 </WholesaleText>
 
                 <WholesaleText>
@@ -566,9 +576,29 @@ const Product = () => {
               </Wholesale>
             )}
 
-          {product.video && (
-            <DescVideo src={product.video} loop muted controls />
-          )}
+          
+          {product.video && 
+          
+          <Vid>
+          <iframe
+            width="560" 
+            height="315" 
+            src={product.video}
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; 
+              autoplay; 
+              clipboard-write; 
+              encrypted-media; 
+              gyroscope; 
+              picture-in-picture; 
+              web-share"
+            allowfullscreen
+          ></iframe>
+          </Vid>
+          }
+
+         
 
           {add && (
             <DIV>
