@@ -71,6 +71,7 @@ const InfoContainer = styled.div`
 
   @media screen and (max-width: 900px) {
     padding: "10px";
+    margin:0px;
   }
 `;
 
@@ -91,7 +92,10 @@ const Desc = styled.p`
   font-weight: 800;
 
   @media screen and (max-width: 1200px) {
-    margin-left: 40px;
+    margin-left: 0px;
+  }
+  @media screen and (max-width: 600px) {
+    margin:0px;
   }
 `;
 
@@ -319,7 +323,8 @@ const Wholesale = styled.div`
 
 const WholesaleText = styled.span`
   display: block;
-
+  font-size:15px;
+  margin:20px;
   animation: progress 0.5s ease alternate infinite;
 `;
 
@@ -349,6 +354,45 @@ const Input = styled.input`
   margin: 10px 0px;
   padding: 10px;
 `;
+
+const Hightlight = styled.div`
+border:2px solid #aaa;
+width:70%;
+font-weight:900;
+whiteSpace: "pre-wrap"
+padding:20px;
+@media screen and (max-width: 600px) {
+  width:100%;
+}
+
+`
+const HightlightSpan = styled.div`
+font-weight:bold;
+padding:30px;
+@media screen and (max-width: 600px) {
+  width:100%;
+}
+`
+const WhatInBox = styled.div`
+border:2px solid #aaa;
+width:70%;
+font-weight:900;
+whiteSpace: "pre-wrap"
+padding:20px;
+@media screen and (max-width: 600px) {
+  width:100%;
+}
+
+`
+
+const Head= styled.span`
+font-weight:900;
+font-size:25px;
+font-family:"Roboto",
+display:block;
+padding:20px;
+text-decoration:underline;
+`
 
 const Product = () => {
   const location = useLocation();
@@ -500,6 +544,21 @@ const Product = () => {
       <Wrapper>
         <ImgContainer>
           <Image src={product.img} />
+          <Hightlight style={{ whiteSpace: "pre-wrap" }}>
+            <Head>Hightlights</Head>
+            <HightlightSpan style={{ whiteSpace: "pre-wrap" }}>
+              Two in 1 Cake Powder in one packScented attractive 
+              smellEvens out skin tone Rich in green teaNatural matte 
+              finish, Silky smooth texture Affordable 3 shades 1,2,3;Shade 
+              1 for light skin tones; Shade 2 for medium skin tones; Shade 3
+              for dark skin tones
+            </ HightlightSpan>
+          </Hightlight>
+          <WhatInBox>
+          <Head>What's in Box</Head>
+          <HightlightSpan >green tea 2-way powder</HightlightSpan> 
+
+          </WhatInBox>
         </ImgContainer>
 
         <InfoContainer>
@@ -572,6 +631,10 @@ const Product = () => {
                 <WholesaleText>
                   {" "}
                   Wholeseller: {product.wholesaleSeller}
+                </WholesaleText>
+
+                <WholesaleText>
+                  Telephone: 0727632051
                 </WholesaleText>
               </Wholesale>
             )}
