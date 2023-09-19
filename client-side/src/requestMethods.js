@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL="http://143.110.150.132:5000/api/";
+const BASE_URL="https://api.duboisbeauty.co.ke/api/";
 const BASE_URL_1="https://api.duboisbeauty.co.ke/api/";
 
 const TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGI2NzM2ZjJmZDM2YTBlMjA5YWE3MSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2NDQ5MTQ1MDUsImV4cCI6MTY0NTE3MzcwNX0.TRfdqYrZXhFrj7kYmpv1jnQtYMxMPu-unP-g9cYux4Q";

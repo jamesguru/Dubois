@@ -164,12 +164,12 @@ const product = ({ item }) => {
 
           {item.wholesalePrice && item.wholesaleSeller && (
             <>
-
-            <Wholesale>wholesale available </Wholesale>
-            <Wholesale>From {item.wholesaleMinimumQuantity} pieces for {item.wholesalePrice}</Wholesale>
+              <Wholesale>Wholesale available </Wholesale>
+              <Wholesale>
+                From {item.wholesaleMinimumQuantity} pieces for{" "}
+                {item.wholesalePrice}
+              </Wholesale>
             </>
-           
-            
           )}
 
           <Title>{item.title}</Title>
