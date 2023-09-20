@@ -11,7 +11,7 @@ const ProductSchema = mongoose.Schema(
     img: { type: String, required: true },
     video: { type: String },
     wholesaleSeller: { type: String },
-    sellerId: { type: Number, required: true },
+    shopId: { type: Number, required: true },
     email: { type: String },
     phone: { type: String, required: true },
     wholesalePrice: { type: Number },

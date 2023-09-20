@@ -62,10 +62,8 @@ const Left = styled.div`
 const Right = styled.div`
   flex: 4;
 `;
-
 const Button = styled.button`
   margin: 10px 0px;
- 
   font-size: 15px;
   font-weight: 900;
   border: none;
@@ -212,16 +210,13 @@ const Menu = () => {
     if (option === "product") {
       try {
         await publicRequest.delete(`/products/${id}`);
-        window.location.reload()
+        window.location.reload();
       } catch (error) {}
-
-      
     } else {
       try {
         await publicRequest.delete(`/orders/${id}`);
-        window.location.reload()
+        window.location.reload();
       } catch (error) {}
-      
     }
   };
   const sendPromote = async (e) => {
@@ -246,12 +241,12 @@ const Menu = () => {
     });
   };
 
-  console.log(inputs)
+  console.log(inputs);
 
-  const handleAddCustomer =(e)=>{
+  const handleAddCustomer = (e) => {
     e.preventDefault();
     publicRequest.put(`/products/ratings/${id}`, inputs);
-  }
+  };
   useEffect(() => {
     const getProducts = async () => {
       try {
@@ -279,17 +274,13 @@ const Menu = () => {
     getOrders();
   }, []);
 
-
   const generatePDF = () => {
-
-    const report = new JsPDF('landscape','pt','a3');
-    report.html(document.querySelector('.prod')).then(() => {
-        report.save('report.pdf');
+    const report = new JsPDF("landscape", "pt", "a3");
+    report.html(document.querySelector(".prod")).then(() => {
+      report.save("report.pdf");
     });
+  };
 
-  }
-
-  
   const columns = [
     { field: "_id", headerName: "ID", width: 90 },
 
@@ -342,18 +333,17 @@ const Menu = () => {
         className="mb-3"
       >
         <Tab eventKey="profile" title="Home">
-        <Button onClick={generatePDF}>
-            Print Pdf<Publish className="publish-icon" />
+          <Button onClick={generatePDF}>
+            Print Pdf
+            <Publish className="publish-icon" />
           </Button>
-          
-          <div >
-          
+
+          <div>
             <Header>Credence Products</Header>
             <Wrapper>
               {data.map((item, index) => (
-
                 <div className="prod">
-                    <Product item={item} key={index} />
+                  <Product item={item} key={index} />
                 </div>
               ))}
             </Wrapper>
@@ -459,23 +449,22 @@ const Menu = () => {
                     <span>{handleStatus(order.status)}</span>
                   </td>
                   <td>
-                  {order.status < 2 ? (
-                  <button
-                    onClick={() => handleUpdate(order._id, order.status)}
-                    style={{
-                      backgroundColor: "teal",
-                      color: "white",
-                      cursor: "pointer",
-                      border: "none",
-                    }}
-
-                    className="updatebtn"
-                  >
-                    next
-                  </button>
-                ) : (
-                  "Delivered"
-                )}
+                    {order.status < 2 ? (
+                      <button
+                        onClick={() => handleUpdate(order._id, order.status)}
+                        style={{
+                          backgroundColor: "teal",
+                          color: "white",
+                          cursor: "pointer",
+                          border: "none",
+                        }}
+                        className="updatebtn"
+                      >
+                        next
+                      </button>
+                    ) : (
+                      "Delivered"
+                    )}
                   </td>
                   <td>
                     <DeleteOutline
@@ -494,9 +483,21 @@ const Menu = () => {
           <Button onClick={handleCustomer}>New Customer</Button>
           {customer && (
             <div className="addcustomer">
-              <input type="text" placeholder="Enter customer name"  onChange={handleChange}/>
-              <input type="phone" placeholder="Enter customer phone"  onChange={handleChange}/>
-              <input type="phone" placeholder="Enter customer email"  onChange={handleChange}/>
+              <input
+                type="text"
+                placeholder="Enter customer name"
+                onChange={handleChange}
+              />
+              <input
+                type="phone"
+                placeholder="Enter customer phone"
+                onChange={handleChange}
+              />
+              <input
+                type="phone"
+                placeholder="Enter customer email"
+                onChange={handleChange}
+              />
               <Button onClick={handleAddCustomer}>Submit</Button>
             </div>
           )}
@@ -514,9 +515,7 @@ const Menu = () => {
                 <tr key={index}>
                   <td>{index + 1}</td>
                   <td>
-                    
-                      <h5>jameskagunga15@gmail.com</h5>
-                    
+                    <h5>jameskagunga15@gmail.com</h5>
                   </td>
                   <td>
                     <span>0727632051</span>
@@ -532,12 +531,11 @@ const Menu = () => {
               size={200}
               bgColor="white"
               fgColor="black"
-              value="http://localhost:3000/product/credence"
+              value={`https://www.duboisbeauty.co.ke/product/shop/${user._id}/products`}
               level="H"
             />
           </div>
 
-          
           <Button onClick={handleLogout}>Logout</Button>
         </Tab>
       </Tabs>

@@ -64,6 +64,20 @@ router.get("/find/:id", async (req, res) => {
   }
 });
 
+// GET PRODUCTS OF SHOP
+
+router.get('/shop/:shopId/products', async (req, res) => {
+  try {
+    const shopId = req.params.shopId;
+    const products = await Product.find({ shopId }); // Assuming 'shopId' matches the field in your product documents
+    res.status(200).json(products);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+
 //GET RELATED
 
 router.get("/related/:id", async (req, res) => {

@@ -130,7 +130,7 @@ const DashBoard = () => {
       email: user.email,
       wholesaleSeller:user.seller,
       phone: user.phone,
-      sellerId:user._id,
+      shopId:user._id,
       categories: Category,
       skintype: SkinType,
       concern: Concern,
