@@ -124,6 +124,7 @@ const DashBoard = () => {
     Category.push(user.seller);
     Category.push('all');
     Category.push(user._id);
+
     const product = {
       ...inputs,
       img: image,
@@ -135,11 +136,12 @@ const DashBoard = () => {
       skintype: SkinType,
       concern: Concern,
     };
+    console.log(product)
 
     try {
       publicRequest.post("/products/", product);
 
-      window.location.reload();
+      
     } catch (error) {}
   };
 
@@ -184,7 +186,7 @@ const DashBoard = () => {
         <UploadImg onClick={handleUpload}>upload</UploadImg>
 
         <h4 style={{ color: "green", fontWeight: "bold" }}>{uploading}</h4>
-        <Label> Youtube Video</Label>
+        <Label>Youtube Video</Label>
         <Input
           type="text"
           name="video"
@@ -208,7 +210,7 @@ const DashBoard = () => {
         />
         <Label>Highlights</Label>
         <TextArea
-          name="highlights"
+          name="highlight"
           cols="40"
           rows="5"
           onChange={handleChange}

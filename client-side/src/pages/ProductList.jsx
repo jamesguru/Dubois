@@ -88,6 +88,8 @@ const ProductList = () => {
 
   const query = "";
 
+  const shop = ""
+
   const cat = location.pathname.split("/")[2];
 
   const [filters, setFilters] = React.useState({});
@@ -104,7 +106,7 @@ const ProductList = () => {
     });
   };
 
-  console.log(filters);
+  
 
   return (
     <Container>
@@ -188,7 +190,7 @@ const ProductList = () => {
         </Filter>
       </FilterContainer>
 
-      <Products cat={cat} query={query} filters={filters} sort={sort} />
+      <Products query={query} shop={shop} cat={cat} filters={filters} sort={sort} />
 
       <Newsletter />
 

@@ -15,11 +15,12 @@ const {
 router.post("/", async (req, res) => {
   const newProduct = Product(req.body);
 
+
   try {
     const product = await newProduct.save();
 
     res.status(200).json(product);
-  } catch (err) {
+  } catch (error) {
     res.status(500).json(error);
   }
 });
@@ -67,9 +68,11 @@ router.get("/find/:id", async (req, res) => {
 // GET PRODUCTS OF SHOP
 
 router.get('/shop/:shopId/products', async (req, res) => {
-  try {
+try {
     const shopId = req.params.shopId;
-    const products = await Product.find({ shopId }); // Assuming 'shopId' matches the field in your product documents
+    const products = await Product.find({ shopId }); 
+    // Assuming 'shopId' matches the field in your product documents
+    console.log(products)
     res.status(200).json(products);
   } catch (err) {
     console.error(err);

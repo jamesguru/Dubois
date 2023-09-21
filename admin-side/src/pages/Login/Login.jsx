@@ -1,61 +1,76 @@
-import React from 'react'
+import React from "react";
 
-import { login } from '../../redux/apiCalls';
-import { useDispatch, useSelector } from 'react-redux';
-import { userRequest } from '../../requestMethods';
+import { login } from "../../redux/apiCalls";
+import { useDispatch, useSelector } from "react-redux";
+import { userRequest } from "../../requestMethods";
 
-import {Link, Redirect} from 'react-router-dom'
+import { Link, Redirect } from "react-router-dom";
 
 const Login = () => {
+  const [username, setUsername] = React.useState("");
 
+  const [password, setPassword] = React.useState("");
 
+  const { isFetching, error, currentUser } = useSelector((state) => state.user);
 
-    const [username, setUsername] = React.useState('');
+  const user = useSelector((state) => state.user);
 
-    const [password, setPassword] = React.useState('');
+  const dispatch = useDispatch();
 
-    const {isFetching,error,currentUser} = useSelector(state => state.user);
+  const handleLogin = (e) => {
+    e.preventDefault();
 
-    const user = useSelector(state => state.user);
+    login(dispatch, { username, password });
+  };
 
-    const dispatch = useDispatch();
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        height: "100vh",
+        alignItems: "center",
+        justifyItems: "center",
+      }}
+    >
+      <h1 style={{ margin: 20, marginTop: 200 }}>Admin DashBoard</h1>
 
+      <input
+        type="text"
+        placeholder="username"
+        style={{ margin: 20 }}
+        onChange={(e) => setUsername(e.target.value)}
+      />
+      <input
+        type="password"
+        placeholder="password"
+        onChange={(e) => setPassword(e.target.value)}
+      />
 
-    const handleLogin = (e) => {
+      <button
+        onClick={handleLogin}
+        style={{
+          margin: 20,
+          backgroundColor: "teal",
+          color: "white",
+          padding: 10,
+          border: "none",
+          width: 100,
+          borderRadius: "3px",
+        }}
+      >
+        Login
+      </button>
 
-        e.preventDefault();
+      {user.currentUser ? <Redirect to="/home" /> : ""}
 
-        username === "james25" && login(dispatch, {username,password});
+      {error ? (
+        <span style={{ color: "red" }}>This is an admin page. </span>
+      ) : (
+        ""
+      )}
+    </div>
+  );
+};
 
-    }
-
-    return (
-        <div style={{display:'flex', flexDirection:'column', height:'100vh', alignItems:'center', justifyItems:'center'}}>
-
-            <h1 style={{margin:20,marginTop:200}}>Admin DashBoard</h1>
-
-            <input type='text' placeholder="username" style={{margin:20}} onChange={(e) => setUsername(e.target.value)}/>
-            <input type='password' placeholder="password" onChange={(e) => setPassword(e.target.value)}/>
-
-            <button onClick={handleLogin} style={{margin:20,backgroundColor:'teal', color:'white', padding:10, border: 'none', width:100, borderRadius:'3px'}}>
-
-
-
-             
-                            
-                            Login
-                    
-            
-
-
-            </button>
-
-            {user.currentUser ? <Redirect to="/home" /> :  "" }
-
-            {error ? <span style={{color:'red'}}>This is an admin page. </span> : ''}
-            
-        </div>
-    )
-}
-
-export default Login
+export default Login;

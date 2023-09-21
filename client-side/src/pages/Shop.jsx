@@ -77,16 +77,10 @@ const Option = styled.option`
   font-size: 16px;
   font-weight: 900;
 `;
-
 const ShopContainer = styled.div`
-  margin: 15px;
+  display:flex;
+  align-items:center;
 
-  background-color: #0c0c0c;
-  width: 80%;
-  padding: 10px;
-  font-family:'Roboto';
-  color: #dcca87;
-  text-align:justify;
 `;
 
 const ShopTitle = styled.h5`
@@ -98,12 +92,29 @@ const Span = styled.span`
 width:40%;
 font-size:18px;
 `
+const Image=styled.img`
+height:300px;
+width:50%;
+object-fit:contain;
+margin:1%;
+
+`
+
+const ShopInfo = styled.div`
+display: flex;
+flex-direction:column;
+`
+const ShopText = styled.span`
+font-size:20px;
+margin:5px;
+
+`
 
 const Shop = () => {
   const location = useLocation();
 
-  const cat = location.pathname.split("/")[2];
-
+  const shop = location.pathname.split("/")[2];
+  const cat = ""
   const query = "";
 
   const [filters, setFilters] = React.useState({});
@@ -129,20 +140,15 @@ const Shop = () => {
       <Title>{query.toUpperCase()}</Title>
 
       <ShopContainer>
-        <ShopTitle>Shop:</ShopTitle>
-        <Span>Credence</Span>
-        <ShopTitle>Location:</ShopTitle>
-        <Span>Nairobi</Span>
-        <ShopTitle>CALL US:</ShopTitle>
-        <Span>0727889290</Span>
-        <ShopTitle>About us:</ShopTitle>
-        <Span>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. It has survived not only
-          
-        </Span>
+
+        <Image src="/img/Marketing.png" alt="shop image"  />
+
+        <ShopInfo>
+          <ShopText><strong>Shop:</strong> Dubois Beauty</ShopText>
+          <ShopText><strong>Location:</strong> Dubois Building Room no 27</ShopText>
+          <ShopText><strong>Telephone:</strong>0727632051</ShopText>
+        </ShopInfo>
+        
       </ShopContainer>
 
       <FilterContainer>
@@ -219,7 +225,7 @@ const Shop = () => {
         </Filter>
       </FilterContainer>
 
-      <Products query={query} cat={cat} filters={filters} sort={sort} />
+      <Products query={query} shop={shop} cat={cat} filters={filters} sort={sort} />
 
       <Newsletter />
 

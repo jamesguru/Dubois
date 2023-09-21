@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import {
   Room,
   Facebook,
@@ -111,7 +112,7 @@ const SocialIcon = styled.div`
 
   display: flex;
 
-  align-items: center;
+ align-items: center;
 
   justify-content: center;
 
@@ -192,6 +193,39 @@ const ContactItem = styled.div`
   color: "#AAA";
 `;
 
+const Button = styled.button`
+  padding: 15px;
+
+  font-size: 18px;
+
+  font-weight: 900;
+
+  background-color: #0c0c0c;
+  color: #dcca87;
+
+  border: none;
+
+  cursor: pointer;
+
+  transition: all 1.5s ease;
+
+  &:hover {
+    transform: scale(1.02);
+
+    color: white;
+
+    border: none;
+
+    font-weight: 600;
+  }
+
+  @media screen and (max-width: 600px) {
+    font-size: 12px;
+
+    padding: 5px;
+  }
+`;
+
 const Footer = () => {
   return (
     <Wrapper>
@@ -246,6 +280,13 @@ const Footer = () => {
             <ListItem>Wish Listing</ListItem>
             <ListItem>Terms</ListItem>
           </List>
+          <Link
+                style={{ color: "inherit", textDecoration: "none" }}
+                to={`/seller`}
+              >
+                <Button>SELLER LOGIN</Button>
+              </Link>
+
         </Center>
 
         <Right>

@@ -251,7 +251,7 @@ const Menu = () => {
     const getProducts = async () => {
       try {
         const res = await publicRequest.get(
-          `/products?category=${user.seller}`
+          `/products/shop/${user._id}/products`
         );
 
         setproducts(res.data);
@@ -339,7 +339,10 @@ const Menu = () => {
           </Button>
 
           <div>
-            <Header>Credence Products</Header>
+            <Header>Shop:{user.seller}</Header>
+            <Header>Location: {user.location}</Header>
+            <Header>Address:{user.address}</Header>
+            <Header>Telephone:{user.phone}</Header>
             <Wrapper>
               {data.map((item, index) => (
                 <div className="prod">
@@ -531,7 +534,7 @@ const Menu = () => {
               size={200}
               bgColor="white"
               fgColor="black"
-              value={`https://www.duboisbeauty.co.ke/product/shop/${user._id}/products`}
+              value={`https://www.duboisbeauty.co.ke/shop/${user._id}`}
               level="H"
             />
           </div>

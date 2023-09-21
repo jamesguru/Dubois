@@ -1,10 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-
 import Typewriter from "typewriter-effect";
-
 import { useEffect, useState } from "react";
-
 import axios from "axios";
 import Loader from "./Loader";
 import { publicRequest } from "../requestMethods";
@@ -81,11 +78,13 @@ const Right = styled.div`
 `;
 
 const Title = styled.span`
-  font-size: 45px;
+  font-size: 30px;
   color: white;
   font-weight: 900;
-  margin: 20px @media screen and (max-width: 1500px) {
-    font-size: 10px;
+  margin: 20px 
+  
+  @media screen and (max-width: 1500px) {
+    font-size: 20px;
   }
 `;
 
@@ -112,7 +111,7 @@ const Promo = () => {
     getPromo();
   }, []);
 
-  console.log(promo);
+ 
 
   return (
     <Container>

@@ -55,7 +55,9 @@ const Page = styled.div`
   }
 `;
 
-const Products = ({ cat, filters, sort, query }) => {
+const Products = ({ cat, shop, filters, sort, query }) => {
+
+  console.log(shop)
   const [products, setproducts] = React.useState([]);
   const [filteredProducts, setfilteredProducts] = React.useState([]);
 
@@ -83,12 +85,20 @@ const Products = ({ cat, filters, sort, query }) => {
           );
 
           setproducts(res.data);
-        } else {
+        } else if(shop){
+          const res = await publicRequest.get(
+            `/products/shop/${shop}/products?page=${currentPage}&limit=12`
+          );
+
+          setproducts(res.data);
+          
+        }else{
           const res = await publicRequest.get(
             `/products?page=${currentPage}&limit=12`
           );
 
           setproducts(res.data);
+
         }
       } catch (error) {}
     };

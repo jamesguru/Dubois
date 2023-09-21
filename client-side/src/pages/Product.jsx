@@ -547,16 +547,12 @@ const Product = () => {
           <Hightlight style={{ whiteSpace: "pre-wrap" }}>
             <Head>Hightlights</Head>
             <HightlightSpan style={{ whiteSpace: "pre-wrap" }}>
-              Two in 1 Cake Powder in one packScented attractive 
-              smellEvens out skin tone Rich in green teaNatural matte 
-              finish, Silky smooth texture Affordable 3 shades 1,2,3;Shade 
-              1 for light skin tones; Shade 2 for medium skin tones; Shade 3
-              for dark skin tones
+             {product.highlight}
             </ HightlightSpan>
           </Hightlight>
           <WhatInBox>
           <Head>What's in Box</Head>
-          <HightlightSpan >green tea 2-way powder</HightlightSpan> 
+          <HightlightSpan >{product.whatinbox}</HightlightSpan> 
 
           </WhatInBox>
         </ImgContainer>

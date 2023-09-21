@@ -1,69 +1,43 @@
-import React from 'react';
+import React from "react";
 
-import Typewriter from 'typewriter-effect';
+import Typewriter from "typewriter-effect";
 
-import styled from 'styled-components';
-
+import styled from "styled-components";
 
 const Container = styled.div`
+  font-size: 20px;
 
+  width: auto;
+  display: flex;
 
-font-size: 20px;
+  align-items: center;
 
+  justify-content: center;
 
-width:auto;
-display:flex;
+  font-weight: bolder;
 
-align-items:center;
+  font-family: "Cormorant Upright";
 
-justify-content:center;
+  height: auto;
+`;
 
-font-weight: bolder;
+const Jumbtron = ({ text }) => {
+  return (
+    <Container>
+      <Typewriter
+        options={{
+          strings: [
+            "Call 0727632051 for",
+            "Help",
+            "Consolutation and",
+            "Placing orders",
+          ],
+          autoStart: true,
+          loop: true,
+        }}
+      />
+    </Container>
+  );
+};
 
-font-family:"Cormorant Upright";
-
-
-height:auto;
-
-
-@media screen and (max-width: 600px){
-
-    
-
-    
-
-
-    display:none;
-
-    
-}
-
-
-
-
-`
-
-
-
-
-
-
-const Jumbtron = ({text}) => {
-    return (
-
-
-        <Container>
-
-            <Typewriter options={{
-                        strings: ['Call 0727632051 for','Help', 'Consolutation and', 'Placing orders'],
-                        autoStart: true,
-                        loop: true,
-                    }}/>
-
-
-        </Container>
-        
-    )
-}
-
-export default Jumbtron
+export default Jumbtron;
