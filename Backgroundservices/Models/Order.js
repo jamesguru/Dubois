@@ -14,7 +14,7 @@ const OrderSchema = mongoose.Schema(
 
     phone: { type: Number, required: true },
 
-    email: { type: String },
+    email: { type: String, required:true},
     selleremail: { type: String },
 
     status: { type: Number, default: 0 },
