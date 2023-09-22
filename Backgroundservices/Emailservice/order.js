@@ -53,7 +53,7 @@ const orderPendingEmail = async () => {
       );
 
       try {
-        await axios.put(`http://localhost:5000/api/orders/${order._id}`, {
+        await axios.put(`https://api.duboisbeauty.co.ke/api/orders/${order._id}`, {
           status: order.status + 1,
         });
       } catch (error) {}
@@ -67,7 +67,7 @@ const orderConfirmedEmail = async () => {
   if (orders.length > 0) {
     for (let order of orders) {
       ejs.renderFile(
-        "templates/orderConfirmed.ejs",
+        "templates/order.ejs",
         { id: order.uid },
         async (err, data) => {
           let messageoption = {
@@ -82,7 +82,7 @@ const orderConfirmedEmail = async () => {
       );
 
       try {
-        await axios.put(`http://localhost:5000/api/orders/${order._id}`, {
+        await axios.put(`https://api.duboisbeauty.co.ke/api/orders/${order._id}`, {
           status: order.status + 1,
         });
       } catch (error) {}
@@ -111,7 +111,7 @@ const orderDeliveredEmail = async () => {
       );
 
       try {
-        await axios.put(`http://localhost:5000/api/orders/${order._id}`, {
+        await axios.put(`https://api.duboisbeauty.co.ke/api/${order._id}`, {
           status: order.status + 1,
         });
       } catch (error) {}
