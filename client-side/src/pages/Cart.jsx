@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Announcement from "../components/Announcement";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+
 import {
   Add,
   Remove,
@@ -12,7 +13,7 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import { mobile } from "../responsive";
 import StripeCheckout from "react-stripe-checkout";
-import React, { useEffect } from "react";
+import React, { useEffect,useRef} from "react";
 import { useHistory, Redirect, Link } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -345,16 +346,18 @@ const Cart = () => {
   const [login, setLogin] = React.useState(false);
 
   const cart = useSelector((state) => state.cart);
-
+  const topRef = useRef(null);
   const user = useSelector((state) => state.user);
-
   const dispatch = useDispatch();
-
+ 
   const [stripeToken, setStripeToken] = React.useState(null);
   const history = useHistory();
 
   const onToken = (token) => {
     setStripeToken(token);
+  };
+  const scrollToTop = () => {
+    topRef.current.scrollIntoView({ behavior: "smooth" });
   };
 
   useEffect(() => {
@@ -387,7 +390,14 @@ const Cart = () => {
     });
   };
 
-  console.log(cart)
+  const handleModal =(e) =>{
+   
+    e.preventDefault();
+    
+    setOpen(true)
+  }
+
+ 
 
   return (
     <Container>
@@ -513,7 +523,7 @@ const Cart = () => {
               <SummaryPrice>{cart.total}</SummaryPrice>
             </SummaryItem>
 
-            <Button onClick={() => setOpen(true)}>ORDER NOW</Button>
+            <Button onClick={handleModal}>ORDER NOW</Button>
           </Summary>
         </Bottom>
       </Wrapper>
@@ -535,7 +545,13 @@ const Cart = () => {
       {user.currentUser ? "" : <ModalLogin setOpen={setOpen} />}
 
       {open && cart.total > 0 ? (
-        <Modal setOpen={setOpen} total={cart.total} products={cart.products} email={cart.email} />
+        <Modal
+          
+          setOpen={setOpen}
+          total={cart.total}
+          products={cart.products}
+          email={cart.email}
+        />
       ) : (
         ""
       )}

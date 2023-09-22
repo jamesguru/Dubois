@@ -64,7 +64,7 @@ animation: inProgress 0.4s ease infinite alternate;
 `;
 
 const Jumbo = styled.div`
-  width: 20%;
+  width: 50%;
 
   font-size: 20px;
 

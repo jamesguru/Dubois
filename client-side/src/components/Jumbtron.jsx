@@ -6,18 +6,12 @@ import styled from "styled-components";
 
 const Container = styled.div`
   font-size: 20px;
-
-  width: auto;
+  width: 100%;
   display: flex;
-
   align-items: center;
-
   justify-content: center;
-
   font-weight: bolder;
-
   font-family: "Cormorant Upright";
-
   height: auto;
 `;
 

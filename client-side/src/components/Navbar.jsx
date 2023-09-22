@@ -30,7 +30,7 @@ height: 100px;
 @media screen and (max-width: 600px){
 
     
-    height:50px;
+    height:80px;
 
     margin-bottom:20px;
  

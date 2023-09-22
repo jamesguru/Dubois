@@ -6,6 +6,9 @@ import { publicRequest } from "../requestMethods";
 
 const Container = styled.div`
   margin: 0% 10%;
+  @media screen and (max-width: 600px) {
+    margin: 0%;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -13,6 +16,9 @@ const Wrapper = styled.div`
   flex-direction: column;
   width: 500px;
   margin: 30px;
+  @media screen and (max-width: 600px) {
+    margin: 0px;
+  }
 `;
 
 const Input = styled.input`
@@ -20,6 +26,9 @@ const Input = styled.input`
   padding: 10px;
   font-weight: bold;
   width: 100%;
+  @media screen and (max-width: 600px) {
+    width: 80%;
+  }
 `;
 
 const Button = styled.button`
@@ -32,6 +41,9 @@ const Button = styled.button`
   color: #dcca87;
   cursor: pointer;
   margin: 20px 0px;
+  @media screen and (max-width: 600px) {
+    width: 80%;
+  }
 `;
 const Heading = styled.h3`
   font-weight: 900;
@@ -44,6 +56,9 @@ const Label = styled.label`
 `;
 const TextArea = styled.textarea`
   padding: 100px;
+  @media screen and (max-width: 600px) {
+    width: 80%;
+  }
 `;
 
 const Select = styled.select`
@@ -51,15 +66,23 @@ const Select = styled.select`
   font-weight: bold;
 `;
 
-const Cat = styled.div``;
+const Cat = styled.div`
+
+@media screen and (max-width: 600px) {
+  width: 80%;
+}
+
+`;
 
 const CatWrapper = styled.div`
   display: flex;
   align-items: center;
   font-weight: 900;
-
   width: 1000px;
   flex-wrap: wrap;
+  @media screen and (max-width: 600px) {
+    width: 100%;
+  }
 `;
 
 const Item = styled.div`
@@ -136,12 +159,11 @@ const DashBoard = () => {
       skintype: SkinType,
       concern: Concern,
     };
-    console.log(product)
+
 
     try {
       publicRequest.post("/products/", product);
-
-      
+      window.location.reload();   
     } catch (error) {}
   };
 
@@ -177,7 +199,7 @@ const DashBoard = () => {
     <Container>
       <Heading>Create Product</Heading>
       <Wrapper>
-        <Label>Image</Label>
+        <Label>Image *</Label>
         <Input
           type="file"
           id="file"
@@ -193,14 +215,14 @@ const DashBoard = () => {
           onChange={handleChange}
           placeholder="https://www.youtube.com/embed/2m-nuy2gpD4?si=jNIrdmTHNCisRcsk"
         />
-        <Label>Title</Label>
+        <Label>Title *</Label>
         <Input
           type="text"
           name="title"
           onChange={handleChange}
           placeholder="Dr Rashel"
         />
-        <Label>Description</Label>
+        <Label>Description *</Label>
         <TextArea
           name="desc"
           cols="40"
@@ -208,7 +230,7 @@ const DashBoard = () => {
           onChange={handleChange}
           placeholder="description"
         />
-        <Label>Highlights</Label>
+        <Label>Highlights *</Label>
         <TextArea
           name="highlight"
           cols="40"
@@ -216,14 +238,21 @@ const DashBoard = () => {
           onChange={handleChange}
           placeholder="Highlights"
         />
-        <Label>Original Price</Label>
+        <Label>What's in Box *</Label>
+        <input
+          name="whatinbox"
+          type="text"
+          onChange={handleChange}
+          placeholder="2 pcs Beard"
+        />
+        <Label>Original Price *</Label>
         <Input
           name="originalPrice"
           type="number"
           placeholder="original price"
           onChange={handleChange}
         />
-        <Label>Discount Price</Label>
+        <Label>Discount Price *</Label>
         <Input
           name="discountedPrice"
           type="number"
@@ -231,21 +260,21 @@ const DashBoard = () => {
           onChange={handleChange}
         />
         
-        <Label>Wholesale Price</Label>
+        <Label>Wholesale Price *</Label>
         <Input
           name="wholesalePrice"
           type="number"
           placeholder="wholesale price"
           onChange={handleChange}
         />
-        <Label>Wholesale Minimum Quantity</Label>
+        <Label>Wholesale Minimum Quantity *</Label>
         <Input
           name="wholesaleMinimumQuantity"
           type="number"
           placeholder="wholesale minimum quantity"
           onChange={handleChange}
         />
-        <Label>Brand</Label>
+        <Label>Brand *</Label>
         <Input
           type="text"
           name="brand"
@@ -254,7 +283,7 @@ const DashBoard = () => {
         />
 
         <Cat>
-          <Header>Category</Header>
+          <Header>Category *</Header>
           <CatWrapper>
             <Item>
               <label>Popular</label>
@@ -294,7 +323,7 @@ const DashBoard = () => {
               />
             </Item>
             <Item>
-              <label>Nail Products</label>
+              <label>Nail Products </label>
               <Input
                 name="category"
                 type="checkbox"
@@ -302,7 +331,7 @@ const DashBoard = () => {
               />
             </Item>
             <Item>
-              <label>Facial Products</label>
+              <label>Facial Products </label>
               <Input
                 name="category"
                 placeholder="jeans,pajamas"
@@ -565,7 +594,7 @@ const DashBoard = () => {
         </Cat>
 
         <Cat>
-          <Header>Skin Type</Header>
+          <Header>Skin Type *</Header>
           <CatWrapper>
             <Item>
               <label>All</label>
@@ -587,7 +616,7 @@ const DashBoard = () => {
               />
             </Item>
             <Item>
-              <label>Sensitive</label>
+              <label>Sensitive </label>
               <Input
                 name="category"
                 placeholder="jeans,pajamas"
@@ -606,7 +635,7 @@ const DashBoard = () => {
             </Item>
           </CatWrapper>
         </Cat>
-        <Label>Instock</Label>
+        <Label>Instock *</Label>
         <Select name="inStock" onChange={handleChange}>
           <option value="true">Yes</option>
           <option value="false">No</option>

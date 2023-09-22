@@ -102,7 +102,7 @@ const orderDeliveredEmail = async () => {
           let messageoption = {
             from: process.env.EMAIL,
             to: order.email,
-            subject: "Thank you for touring with Afrikan Accent Adventures",
+            subject: "Here are your orders",
             html: data,
           };
 

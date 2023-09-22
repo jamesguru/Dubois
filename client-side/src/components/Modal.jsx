@@ -147,20 +147,13 @@ const Modal = ({ total, products, setOpen,email}) => {
   const [address, setAddress] = React.useState("");
 
   const [phone, setPhone] = React.useState("");
-
+  
   const [location, setLocation] = React.useState("Nairobi");
 
   const user = useSelector((state) => state.user.currentUser);
   let history = useHistory();
 
-  {
-    if (location === "Nairobi" || location === "Kiambu") {
-      total += 100;
-    } else {
-      total += 300;
-    }
-  }
-
+ 
   const handleClick = async (e) => {
     e.preventDefault();
    const order = {

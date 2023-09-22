@@ -8,7 +8,7 @@ import { Remove, Add } from "@material-ui/icons";
 import { mobile } from "../responsive";
 import { useLocation, Prompt } from "react-router-dom";
 import { publicRequest } from "../requestMethods";
-
+import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addProduct } from "../redux/cartRedux";
 import { Select } from "@material-ui/core";
@@ -316,8 +316,9 @@ const Wholesale = styled.div`
 
   @media screen and (max-width: 600px) {
     font-size: 12px;
-
+    width:100%;
     font-weight: 900;
+    margin:5px;
   }
 `;
 
@@ -632,6 +633,14 @@ const Product = () => {
                 <WholesaleText>
                   Telephone: 0727632051
                 </WholesaleText>
+
+                <Link
+                style={{ color: "inherit", textDecoration: "none" }}
+                to={`/shop/${product.shopId}`}
+              >
+                <Button>Visit Shop</Button>
+              </Link>
+
               </Wholesale>
             )}
 

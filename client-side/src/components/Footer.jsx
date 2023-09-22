@@ -112,7 +112,7 @@ const SocialIcon = styled.div`
 
   display: flex;
 
- align-items: center;
+  align-items: center;
 
   justify-content: center;
 
@@ -281,12 +281,11 @@ const Footer = () => {
             <ListItem>Terms</ListItem>
           </List>
           <Link
-                style={{ color: "inherit", textDecoration: "none" }}
-                to={`/seller`}
-              >
-                <Button>SELLER LOGIN</Button>
-              </Link>
-
+            style={{ color: "inherit", textDecoration: "none" }}
+            to={`/seller`}
+          >
+            <Button>SELLER LOGIN</Button>
+          </Link>
         </Center>
 
         <Right>

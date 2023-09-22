@@ -94,6 +94,9 @@ const Delete = styled.div`
   width: 20%;
   background-color: #fff;
   height: 100%;
+  @media screen and (max-width: 600px) {
+    width: 80%;
+  }
 `;
 const Update = styled.div`
   position: absolute;
@@ -102,6 +105,9 @@ const Update = styled.div`
   width: 20%;
   background-color: #fff;
   height: 100%;
+  @media screen and (max-width: 600px) {
+    width: 80%;
+  }
 `;
 const UpdateInfo = styled.div`
   margin: 20px;
