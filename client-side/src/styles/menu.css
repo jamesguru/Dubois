@@ -93,3 +93,11 @@ span {
 .update textarea{
   padding:30px;
 }
+.invalid {
+  border: 2px solid red;
+}
+
+.error-message{
+
+  color: red;
+}

@@ -40,17 +40,11 @@ mongoose
 app.use(express.json());
 app.use(cors());
 app.use("/api/carts", cartRoute);
-
 app.use("/api/slider", sliderRoute);
-
 app.use("/api/annoucement", AnnoucementRoute);
-
 app.use("/api/category", CategoryRoute);
-
 app.use("/api/promotion", promoRoute);
-
 app.use("/api/comments", commentsRoute);
-
 app.use("/api/gallery", galleryRoute);
 app.use("/api/orders", orderRoute);
 app.use("/api/products", productRoute);

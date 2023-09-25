@@ -33,7 +33,7 @@ import Table from "react-bootstrap/Table";
 import ProductDataGrid from "../components/ProductDataGrid";
 
 const Container = styled.div`
-  margin: 50px;
+  margin: 10px;
   font-weight: 900px;
 `;
 
@@ -246,9 +246,6 @@ const Menu = () => {
       return { ...prev, [e.target.name]: e.target.value };
     });
   };
-
-  console.log(inputs);
-
   const handleAddCustomer = (e) => {
     e.preventDefault();
     publicRequest.put(`/products/ratings/${id}`, inputs);
@@ -424,8 +421,8 @@ const Menu = () => {
                 <tr key={index}>
                   <td>{index + 1}</td>
                   <td>
-                    {order.products.map((product) => (
-                      <div className="products">
+                    {order.products.map((product, index) => (
+                      <div className="products" key={index}>
                         <img src={product.img} alt="" />
                         <h5>{product.title}</h5>
                       </div>
@@ -487,6 +484,10 @@ const Menu = () => {
           </Table>
         </Tab>
         <Tab eventKey="contact" title="My Account">
+          <Header>Shop:{user.seller}</Header>
+          <Header>Location: {user.location}</Header>
+          <Header>Address:{user.address}</Header>
+          <Header>Telephone:{user.phone}</Header>
           <h5>My Customers</h5>
 
           <Button onClick={handleCustomer}>New Customer</Button>

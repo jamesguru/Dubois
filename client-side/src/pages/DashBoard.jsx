@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import { publicRequest } from "../requestMethods";
 
+import "../styles/menu.css"
 const Container = styled.div`
   margin: 0% 10%;
   @media screen and (max-width: 600px) {
@@ -43,6 +44,7 @@ const Button = styled.button`
   margin: 20px 0px;
   @media screen and (max-width: 600px) {
     width: 80%;
+     font-size: 18px;
   }
 `;
 const Heading = styled.h3`
@@ -118,8 +120,6 @@ let SkinType = [];
 const DashBoard = () => {
   const [inputs, setInputs] = useState({});
   const [file, setFile] = useState(null);
-  const [file2, setFile2] = useState(null);
-  const dispatch = useDispatch();
   const [uploading, setUploading] = useState("uploading is 0%");
   const [image, setImage] = useState("");
   const user = useSelector((state) => state.user.currentUser);
@@ -167,6 +167,7 @@ const DashBoard = () => {
     } catch (error) {}
   };
 
+ 
   const handleUpload = async (e) => {
     e.preventDefault();
 
@@ -196,7 +197,9 @@ const DashBoard = () => {
   };
 
   return (
+    <form action="" >
     <Container>
+      
       <Heading>Create Product</Heading>
       <Wrapper>
         <Label>Image *</Label>
@@ -221,7 +224,9 @@ const DashBoard = () => {
           name="title"
           onChange={handleChange}
           placeholder="Dr Rashel"
+          
         />
+          
         <Label>Description *</Label>
         <TextArea
           name="desc"
@@ -229,7 +234,9 @@ const DashBoard = () => {
           rows="5"
           onChange={handleChange}
           placeholder="description"
+         
         />
+        
         <Label>Highlights *</Label>
         <TextArea
           name="highlight"
@@ -237,27 +244,34 @@ const DashBoard = () => {
           rows="5"
           onChange={handleChange}
           placeholder="Highlights"
+         
         />
+       
         <Label>What's in Box *</Label>
         <input
           name="whatinbox"
           type="text"
           onChange={handleChange}
           placeholder="2 pcs Beard"
+          
         />
+        
         <Label>Original Price *</Label>
         <Input
           name="originalPrice"
           type="number"
           placeholder="original price"
           onChange={handleChange}
+          
         />
+         
         <Label>Discount Price *</Label>
         <Input
           name="discountedPrice"
           type="number"
           placeholder="discounted price"
           onChange={handleChange}
+          
         />
         
         <Label>Wholesale Price *</Label>
@@ -280,7 +294,9 @@ const DashBoard = () => {
           name="brand"
           placeholder="Kylie"
           onChange={handleChange}
+         
         />
+        
 
         <Cat>
           <Header>Category *</Header>
@@ -644,6 +660,7 @@ const DashBoard = () => {
         <Button onClick={handleClick}>Create Product</Button>
       </Wrapper>
     </Container>
+     </form>
   );
 };
 

@@ -79,7 +79,7 @@ const Option = styled.option`
 `;
 const SearchProductList = () => {
   const location = useLocation();
-  const shop = "";
+  const shopId = "";
   const query = location.pathname.split("/")[2];
 
   const cat = "";
@@ -180,7 +180,7 @@ const SearchProductList = () => {
         </Filter>
       </FilterContainer>
 
-      <Products query={query} shop={shop} cat={cat} filters={filters} sort={sort} />
+      <Products query={query} shop={shopId} cat={cat} filters={filters} sort={sort} />
 
       <Newsletter />
 

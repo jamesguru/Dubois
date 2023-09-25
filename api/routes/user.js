@@ -49,7 +49,7 @@ router.delete("/:id", verifyTokenAndAuthorization, async (req, res) => {
 
 //GET
 
-router.get("/find/:id", verifyTokenAndAdmin, async (req, res) => {
+router.get("/find/:id", async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
 
@@ -118,7 +118,7 @@ router.put("/customer/:sellerId", async (req, res) => {
     if (email) {
       const seller = await User.findByIdAndUpdate(
         req.params.sellerId,
-        { $push: { ratings: {name,email,phone} } },
+        { $push: { ratings: { name, email, phone } } },
         { new: true }
       );
 

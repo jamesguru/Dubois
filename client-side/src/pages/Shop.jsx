@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import styled from "styled-components";
 import Announcement from "../components/Announcement";
 import Navbar from "../components/Navbar";
@@ -9,6 +9,7 @@ import { mobile } from "../responsive";
 import { useLocation } from "react-router-dom";
 import Brands from "../components/Brands";
 import NavCategory from "../components/NavCategory";
+import { publicRequest } from "../requestMethods";
 
 const Container = styled.div``;
 
@@ -80,7 +81,10 @@ const Option = styled.option`
 const ShopContainer = styled.div`
   display:flex;
   align-items:center;
-
+  @media screen and (max-width: 600px) {
+    display:flex;
+    flex-direction:column;
+  }
 `;
 
 const ShopTitle = styled.h5`
@@ -97,6 +101,11 @@ height:300px;
 width:50%;
 object-fit:contain;
 margin:1%;
+@media screen and (max-width: 600px) {
+  
+  width:80%;
+  
+}
 
 `
 
@@ -112,8 +121,8 @@ margin:5px;
 
 const Shop = () => {
   const location = useLocation();
-
-  const shop = location.pathname.split("/")[2];
+  const [shop,setShop] = useState({});
+  const shopId = location.pathname.split("/")[2];
   const cat = ""
   const query = "";
 
@@ -131,6 +140,21 @@ const Shop = () => {
     });
   };
 
+  useEffect(() => {
+    const getProducts = async () => {
+      try {
+        const res = await publicRequest.get(
+          `/users/find/${shopId}`
+        );
+
+        setShop(res.data);
+      } catch (error) {}
+    };
+
+    getProducts();
+  }, []);
+
+  
   return (
     <Container>
       <Announcement />
@@ -144,9 +168,9 @@ const Shop = () => {
         <Image src="/img/Marketing.png" alt="shop image"  />
 
         <ShopInfo>
-          <ShopText><strong>Shop:</strong> Dubois Beauty</ShopText>
-          <ShopText><strong>Location:</strong> Dubois Building Room no 27</ShopText>
-          <ShopText><strong>Telephone:</strong>0727632051</ShopText>
+          <ShopText><strong>Shop:</strong> {shop.seller}</ShopText>
+          <ShopText><strong>Location:</strong> {shop.address}</ShopText>
+          <ShopText><strong>Telephone:</strong>{shop.phone}</ShopText>
         </ShopInfo>
         
       </ShopContainer>
@@ -225,7 +249,7 @@ const Shop = () => {
         </Filter>
       </FilterContainer>
 
-      <Products query={query} shop={shop} cat={cat} filters={filters} sort={sort} />
+      <Products query={query} shop={shopId} cat={cat} filters={filters} sort={sort} />
 
       <Newsletter />
 
