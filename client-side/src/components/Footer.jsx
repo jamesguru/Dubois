@@ -280,14 +280,14 @@ const Footer = () => {
             <ListItem>Wish Listing</ListItem>
             <ListItem>Terms</ListItem>
           </List>
-          <Link
+         
+        </Center>
+        <Link
             style={{ color: "inherit", textDecoration: "none" }}
             to={`/seller`}
           >
             <Button>SELLER LOGIN</Button>
           </Link>
-        </Center>
-
         <Right>
           <Title>Contact us.</Title>
 

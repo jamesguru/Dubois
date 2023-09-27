@@ -76,6 +76,10 @@ span {
   flex-direction: column;
 }
 
+input{
+  width:80%;
+}
+
 .update{
   display: flex;
   flex-direction: column;

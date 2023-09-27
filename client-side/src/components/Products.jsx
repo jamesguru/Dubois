@@ -30,7 +30,7 @@ const Container = styled.div`
 
   flex-wrap: wrap;
 
-  margin: 10px;
+  margin: 5px;
 
   @media screen and (max-width: 600px) {
     margin: 10px;

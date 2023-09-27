@@ -36,7 +36,7 @@ const Image = styled.img`
 
   position: relative;
 
-  margin: 20px;
+  margin: 10px;
 
   object-fit: cover;
 
@@ -160,7 +160,7 @@ const product = ({ item }) => {
         to={`/product/${item._id}`}
       >
         <InfoContainer>
-          <Image src={item.img} alt="" />
+          <Image src={item.img} alt={item.title} />
 
           {item.wholesalePrice && item.wholesaleSeller && (
             <>

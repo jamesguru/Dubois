@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef,useState } from "react";
 import styled from "styled-components";
 import QRCode from "react-qr-code";
 import { logOut } from "../redux/userRedux";
@@ -77,6 +77,7 @@ const Button = styled.button`
 `;
 const Header = styled.h5`
   font-family: "Roboto";
+  width:80%;
 `;
 const Modal = styled.div`
   position: absolute;
@@ -156,13 +157,14 @@ const Menu = () => {
   const downloadRef = useRef(null);
   const [customer, setCustomer] = React.useState(false);
   const [promote, setPromote] = React.useState(false);
+  const [copied, setCopied] = React.useState(false);
   const [data, setproducts] = React.useState([]);
   const [orders, setOrders] = React.useState([]);
   const user = useSelector((state) => state.user.currentUser);
   const dispatch = useDispatch();
   const history = useHistory();
   const [inputs, setInputs] = React.useState({});
-
+  const shopUrl=`https://www.duboisbeauty.co.ke/shop/${user._id}`;
   const handleClick = () => {
     setOpen(true);
   };
@@ -488,7 +490,29 @@ const Menu = () => {
           <Header>Location: {user.location}</Header>
           <Header>Address:{user.address}</Header>
           <Header>Telephone:{user.phone}</Header>
-          <h5>My Customers</h5>
+          <Header>ShopID:{user._id}</Header>
+          <Header>ShopURL:{`https://www.duboisbeauty.co.ke/shop/${user._id}`}</Header>
+          <button onClick={() => {
+         navigator.clipboard.writeText(shopUrl);
+         setCopied(true)
+         
+         }}>
+        {copied ? "Copied" : "Copy shop url"}
+       </button>
+         
+          <Header>Shop QRCode</Header>
+          <div className="HpQrcode">
+          <QRCode
+              size={200}
+              bgColor="white"
+              fgColor="black"
+              value={`https://www.duboisbeauty.co.ke/shop/${user._id}`}
+              level="H"
+            />
+          </div>
+
+          <Button onClick={handleLogout}>Logout</Button>
+          <Header>My Customer</Header>
 
           <Button onClick={handleCustomer}>New Customer</Button>
           {customer && (
@@ -521,32 +545,20 @@ const Menu = () => {
               </tr>
             </thead>
             <tbody>
-              {data.map((product, index) => (
+              {user.customers.map((customer, index) => (
                 <tr key={index}>
                   <td>{index + 1}</td>
                   <td>
-                    <h5>jameskagunga15@gmail.com</h5>
+                    <h5>{customer.email}</h5>
                   </td>
                   <td>
-                    <span>0727632051</span>
+                    <span>{customer.phone}</span>
                   </td>
                 </tr>
               ))}
             </tbody>
           </Table>
-          <div className="HpQrcode">
-            <h5>Shop QR CODE</h5>
-
-            <QRCode
-              size={200}
-              bgColor="white"
-              fgColor="black"
-              value={`https://www.duboisbeauty.co.ke/shop/${user._id}`}
-              level="H"
-            />
-          </div>
-
-          <Button onClick={handleLogout}>Logout</Button>
+          
         </Tab>
       </Tabs>
 

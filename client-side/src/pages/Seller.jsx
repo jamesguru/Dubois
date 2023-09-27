@@ -14,6 +14,12 @@ const Wrapper = styled.div`
   width: 500px;
   align-items: center;
   margin: 10% 35%;
+  @media screen and (max-width: 900px) {
+    
+    margin: 20% 2%;
+    width: 80%;
+    font-weight: 700;
+  }
 `;
 
 const Input = styled.input`
